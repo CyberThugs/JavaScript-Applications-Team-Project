@@ -1,0 +1,75 @@
+{
+  "name": "javascript-applications-team-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "App.js",
+
+  "scripts": {
+    "start": "webpack --config ./webpack/webpack.config.dev.js"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CyberThugs/JavaScript-Applications-Team-Project.git"
+  },
+
+  "author": "",
+
+  "dependencies": {
+    "classnames": "2.2.3",
+    "history": "^4.3.0",
+    "isomorphic-fetch": "2.2.1",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-redux": "4.4.5",
+    "redux": "3.5.2",
+    "redux-logger": "2.6.1",
+    "redux-thunk": "2.1.0",
+    "seamless-immutable": "6.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "babel-core": "latest",
+    "babel-loader": "latest",
+    "babel-plugin-lodash": "latest",
+    "babel-plugin-transform-class-properties": "latest",
+    "babel-plugin-transform-decorators-legacy": "latest",
+    "babel-plugin-uglify": "latest",
+    "babel-preset-es2015": "latest",
+    "babel-preset-react": "latest",
+    "babel-preset-stage-0": "latest",
+    "babel-preset-stage-1": "latest",
+    "commander": "latest",
+    "copy-webpack-plugin": "latest",
+    "cross-env": "^3.1.3",
+    "css-loader": "^0.14.5",
+    "extract-text-webpack-plugin": "latest",
+    "file-loader": "latest",
+    "html-webpack-plugin": "^2.24.1",
+    "json-loader": "latest",
+    "less": "latest",
+    "less-loader": "latest",
+    "lodash-webpack-plugin": "latest",
+    "postcss-loader": "latest",
+    "raw-loader": "^0.5.1",
+    "react-addons-test-utils": "latest",
+    "react-hot-loader": "latest",
+    "react-svg-loader": "^1.1.1",
+    "redux-devtools": "latest",
+    "redux-devtools-dock-monitor": "latest",
+    "redux-devtools-log-monitor": "latest",
+    "redux-immutable-state-invariant": "latest",
+    "redux-slider-monitor": "latest",
+    "rimraf": "latest",
+    "source-map-loader": "latest",
+    "stats-webpack-plugin": "latest",
+    "strip-ansi": "^3.0.1",
+    "style-loader": "latest",
+    "url-loader": "latest",
+    "watch-ignore-webpack-plugin": "latest",
+    "webpack": "latest",
+    "webpack-configurator": "latest",
+    "webpack-dev-server": "latest",
+    "webpack-vendor-chunk-plugin": "latest"
+  }
+}
