@@ -1,14 +1,18 @@
-.idea/*
-!.idea/libraries
-!.idea/inspectionProfiles
-!.idea/copyright
-!.idea/.name
-!.idea/codeStyleSettings.xml
-!.idea/encodings.xml
-!.idea/jsLibraryMappings.xml
-!.idea/misc.xml
-!.idea/modules.xml
-!.idea/vagrant.xml
-!.idea/watcherTasks.xml
-node_modules/
-build/*
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+
+# production
+build
+
+# misc
+.DS_Store
+npm-debug.log
+
+# vscode stuff
+*.d.ts
+.vscode/
+typings.json
+jsconfig.json
+
