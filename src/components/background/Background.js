@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 
 require('./background.css');
@@ -35,7 +33,7 @@ class Background extends React.Component {
             let background = this.state.background + 1;
             if (background > this.backgrounds.length - 1) background = 0;
             this.setState({background});
-        }, 60000);
+        }, 6000);
     }
 
     componentWillUnmount() {

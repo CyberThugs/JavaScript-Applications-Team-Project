@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ComicsSearchForm from '../../components/comics-search-form/ComicsSearchForm';
@@ -17,15 +17,6 @@ class ComicsSearchPage extends Component {
     }
 }
 
-
-const mapStateToProps = (state) => {
-    const { location } = state;
-    return {
-        location: location ? location.location : null,
-    };
-};
-
-
-export default connect(mapStateToProps)(ComicsSearchPage);
+export default connect()(ComicsSearchPage);
 
 

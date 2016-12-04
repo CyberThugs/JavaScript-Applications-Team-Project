@@ -9,25 +9,41 @@ import Home from '../home/Home';
 import ComicsSearchPage from '../comics-search/ComicsSearchPage';
 import Background from '../../components/background/Background';
 
+const createHistory = require('history/createBrowserHistory').default;
+const history = createHistory();
 import { handleLocation } from '../../actions/location';
 
 import './app.css';
 
+
 class App extends Component {
+    static history = history;
+
+    componentWillMount() {
+        this._unlisten = history.listen((location, action) => {
+            this.props.handleLocation(location.pathname);
+            history.push(location.pathname);
+        })
+    }
 
     handleLogout() {
 
     }
 
-    render() {
+    componentWillUnmount() {
+        this._unlisten && this._unlisten();
+        this._unlisten = null;
+    }
 
+    render() {
+        console.log(history);
         const { user } = this.props;
         return (
             <div className="container">
-                <Header location={this.props.location} user={user} handleLogout={() => this.handleLogout()}/>
-                {this.props.location == "about" ? <About/> : null}
-                {this.props.location == "home" ? <Home/> : null}
-                {this.props.location == "comics-search" ? <ComicsSearchPage/> : null}
+                <Header location={this.props.location} user={user} handleLocation={this.props.handleLocation} handleLogout={() => this.handleLogout()}/>
+                {this.props.location === "about" ? <About/> : null}
+                {this.props.location === "/" ? <Home/> : null}
+                {this.props.location === "comics-search" ? <ComicsSearchPage/> : null}
                 <Footer/>
 
                 <Background />

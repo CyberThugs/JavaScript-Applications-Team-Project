@@ -1,6 +1,6 @@
 import {LOCATION} from "../actions/location"
 const initialState = {
-    location:"home"
+    location:"/"
 };
 
 export default function location(state = initialState, action) {

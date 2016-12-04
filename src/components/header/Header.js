@@ -1,19 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import { Link, IndexLink } from 'react-router';
-import UserProfile from './UserProfile';
-import Alerts from './Alerts';
+import React, { Component } from 'react';
 import './header.css';
 import { connect } from 'react-redux';
 
-
-import { handleLocation } from '../../actions/location';
-
-
 class Header extends Component {
-    constructor(props) {
-        super(props);
-
-    }
 
     onLogoutClick = (event) => {
         event.preventDefault();
@@ -37,8 +26,6 @@ class Header extends Component {
                     <li>
                         <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"comics-search")}>Search Comics</a>
                     </li>
-
-
                 </ul>
             </div>
         );
@@ -46,25 +33,5 @@ class Header extends Component {
 
 }
 
-Header.propTypes = {};
-
-const mapStateToProps = (state) => {
-    const { location } = state;
-    return {
-        location: location ? location.location : null,
-    };
-};
-
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        handleLocation: (currentLocation) => {
-            dispatch(handleLocation(currentLocation))
-        }
-    };
-};
-
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
 )(Header);
