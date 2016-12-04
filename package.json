@@ -2,9 +2,6 @@
   "name": "javascript-application-team-project",
   "version": "1.0.0",
   "description": "JavaSript-Applications-Team-Project",
-  "bugs": {
-    "url": "https://github.com/cloudmu/react-redux-starter-kit/issues"
-  },
   "proxy": "http://localhost:3001",
   "devDependencies": {
     "react-scripts": "0.7.0"
