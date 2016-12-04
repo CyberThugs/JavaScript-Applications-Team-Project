@@ -1,10 +1,10 @@
 'use strict';
 
-import React, { Component } from 'react';
+import React from 'react';
 
-require('./background.less');
+require('./background.css');
 
-class Background extends Component {
+class Background extends React.Component {
 
     constructor(props, context) {
         super(props, context);

@@ -7,6 +7,7 @@ import Footer from '../../components/footer/Footer';
 import About from '../about/About';
 import Home from '../home/Home';
 import ComicsSearchPage from '../comics-search/ComicsSearchPage';
+import Background from '../../components/background/Background';
 
 import { handleLocation } from '../../actions/location';
 
@@ -29,6 +30,7 @@ class App extends Component {
                 {this.props.location == "comics-search" ? <ComicsSearchPage/> : null}
                 <Footer/>
 
+                <Background />
             </div>
         );
     }
