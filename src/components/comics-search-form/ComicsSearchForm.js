@@ -26,7 +26,7 @@ export default class ComicsSearchForm extends Component {
                                 <input type="text" className="form-control" id="comic-name" ref="name"/>
                             </div>
                             <div className="form-group">
-                                <button>Search</button>
+                                <button className="btn btn-primary">Search</button>
                             </div>
                         </div>
                     </form>

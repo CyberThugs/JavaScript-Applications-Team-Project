@@ -26,6 +26,7 @@ class App extends Component {
                 {this.props.location == "about" ? <About/> : null}
                 {this.props.location == "home" ? <Home/> : null}
                 {this.props.location == "comics-search" ? <ComicsSearchPage/> : null}
+
             </div>
         );
     }

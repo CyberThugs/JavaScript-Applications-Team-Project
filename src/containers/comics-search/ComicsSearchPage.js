@@ -6,7 +6,13 @@ import ComicsSearchForm from '../../components/comics-search-form/ComicsSearchFo
 class ComicsSearchPage extends Component {
     render() {
         return (
-            <ComicsSearchForm />
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6 col-md-offset-2">
+                        <ComicsSearchForm />
+                    </div>
+                </div>
+            </div>
         )
     }
 }
