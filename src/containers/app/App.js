@@ -3,6 +3,10 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from '../../components/header/Header';
 
+import About from '../about/About';
+import Home from '../home/Home';
+import ComicsSearchPage from '../comics-search/ComicsSearchPage';
+
 import { handleLocation } from '../../actions/location';
 
 import './app.css';
@@ -14,17 +18,14 @@ class App extends Component {
     }
 
     render() {
-        console.log(
-            this.props
-        )
+
         const { user } = this.props;
         return (
             <div className="container">
                 <Header location={this.props.location} user={user} handleLogout={() => this.handleLogout()}/>
-                {this.props.location == "About" ? <div>mneshto</div> : null}
-                {this.props.location == "home" ? <div className="container appContent">
-                    <button onClick={this.props.handleLocation.bind(null,"About")}>ChanceLocation</button>
-                </div> : null}
+                {this.props.location == "about" ? <About/> : null}
+                {this.props.location == "home" ? <Home/> : null}
+                {this.props.location == "comics-search" ? <ComicsSearchPage/> : null}
             </div>
         );
     }

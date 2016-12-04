@@ -3,8 +3,13 @@ import { Link, IndexLink } from 'react-router';
 import UserProfile from './UserProfile';
 import Alerts from './Alerts';
 import './header.css';
+import { connect } from 'react-redux';
 
-export default class Header extends Component {
+
+import { handleLocation } from '../../actions/location';
+
+
+class Header extends Component {
     constructor(props) {
         super(props);
 
@@ -21,28 +26,18 @@ export default class Header extends Component {
             <div id="sidebar-wrapper">
                 <ul className="sidebar-nav">
                     <li className="sidebar-brand">
-                        <a href="#">
-                            Start Bootstrap
+                        <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"home")}>
+                            Marvel Vault
                         </a>
                     </li>
+
                     <li>
-                        <a href="#">Dashboard</a>
+                        <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"about")}>About</a>
                     </li>
                     <li>
-                        <a href="#">Shortcuts</a>
+                        <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"comics-search")}>Search Comics</a>
                     </li>
-                    <li>
-                        <a href="#">Overview</a>
-                    </li>
-                    <li>
-                        <a href="#">Events</a>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
+
 
                 </ul>
             </div>
@@ -52,3 +47,24 @@ export default class Header extends Component {
 }
 
 Header.propTypes = {};
+
+const mapStateToProps = (state) => {
+    const { location } = state;
+    return {
+        location: location ? location.location : null,
+    };
+};
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleLocation: (currentLocation) => {
+            dispatch(handleLocation(currentLocation))
+        }
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Header);
