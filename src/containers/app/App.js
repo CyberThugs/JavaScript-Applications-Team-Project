@@ -2,54 +2,59 @@ import React, { Component, PropTypes } from 'react';
 
 import { connect } from 'react-redux';
 import Header from '../../components/header/Header';
-import Footer from '../../components/footer/Footer';
 
-import { logout } from '../../actions/auth';
+import { handleLocation } from '../../actions/location';
 
 import './app.css';
 
 class App extends Component {
 
-  handleLogout() {
-    const { user } = this.props;
-    this.props.dispatch(logout(user));
-    this.context.router.replace('/login');
-  }
+    handleLogout() {
 
-  render() {
-    const { user } = this.props;
-    return (
-      <div className="container">
+    }
 
-        <Header location={this.props.location} user={user} handleLogout={() => this.handleLogout()}/>
-        <div className="container appContent">
-          {this.props.children}
-        </div>
-        <Footer/>
-      </div>
-    );
-  }
+    render() {
+        console.log(
+            this.props
+        )
+        const { user } = this.props;
+        return (
+            <div className="container">
+                <Header location={this.props.location} user={user} handleLogout={() => this.handleLogout()}/>
+                {this.props.location == "About" ? <div>mneshto</div> : null}
+                {this.props.location == "home" ? <div className="container appContent">
+                    <button onClick={this.props.handleLocation.bind(null,"About")}>ChanceLocation</button>
+                </div> : null}
+            </div>
+        );
+    }
 }
 
 App.propTypes = {
-  user: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  dispatch: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired,
+    location: PropTypes.string
 };
 
 App.contextTypes = {
-  router: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired,
+    store: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {
-  const { auth } = state;
-  return {
-    user: auth ? auth.user : null,
-  };
+    const { location } = state;
+    return {
+        location: location ? location.location : null,
+    };
+};
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleLocation: (currentLocation) => {
+            dispatch(handleLocation(currentLocation))
+        }
+    };
 };
 
 export default connect(
-  mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(App);
