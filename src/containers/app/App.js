@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import { connect } from 'react-redux';
 import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
 
 import About from '../about/About';
 import Home from '../home/Home';
@@ -26,6 +27,7 @@ class App extends Component {
                 {this.props.location == "about" ? <About/> : null}
                 {this.props.location == "home" ? <Home/> : null}
                 {this.props.location == "comics-search" ? <ComicsSearchPage/> : null}
+                <Footer/>
 
             </div>
         );
