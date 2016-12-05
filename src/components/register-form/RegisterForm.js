@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-export default class LoginForm extends Component {
+export default class RegisterForm extends Component {
     render() {
         return (
-            <form className="login-form" onSubmit={this.submitForm.bind(this)}>
-                <h1>Login</h1>
+            <form className="register-form" onSubmit={this.submitForm.bind(this)}>
+                <h1>Register</h1>
                 <label>
                     <div>Username:</div>
                     <input type="text" name="username" required
@@ -15,8 +15,13 @@ export default class LoginForm extends Component {
                     <input type="password" name="password" required
                            ref={e => this.passwordField = e} />
                 </label>
+                <label>
+                    <div>Confirm Password:</div>
+                    <input type="password" name="confirmPassw" required
+                           ref={e => this.confirmPasswordField = e} />
+                </label>
                 <div>
-                    <input type="submit" value="Login" />
+                    <input type="submit" value="Register" />
                 </div>
             </form>
         );
@@ -28,6 +33,6 @@ export default class LoginForm extends Component {
 
         //TODO: function for send data to server
         // this.props.onsubmit(
-        //     this.usernameField.value, this.passwordField.value);
+        //     this.usernameField.value, this.passwordField.value, this.confirmPasswordField.value);
     }
 }

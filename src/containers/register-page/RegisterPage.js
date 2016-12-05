@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import LoginForm from '../../components/login-form/LoginForm';
+import RegisterForm from '../../components/register-form/RegisterForm';
 
-class LoginPage extends Component {
+class RegisterPage extends Component {
     render() {
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-md-8 col-md-offset-3">
-                        <LoginForm />
+                        <RegisterForm />
                     </div>
                 </div>
             </div>
@@ -17,6 +17,4 @@ class LoginPage extends Component {
     }
 }
 
-export default connect()(LoginPage);
-
-
+export default connect()(RegisterPage);

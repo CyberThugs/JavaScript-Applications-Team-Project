@@ -8,6 +8,7 @@ class ComicsSearchPage extends Component {
         return (
             <div className="container">
                 <div className="row">
+                    <h1>Search comic</h1>
                     <div className="col-md-6 col-md-offset-2">
                         <ComicsSearchForm />
                     </div>

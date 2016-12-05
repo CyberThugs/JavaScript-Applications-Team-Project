@@ -27,7 +27,10 @@ class Header extends Component {
                         <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"comics-search")}>Search Comics</a>
                     </li>
                     <li>
-                        <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"login-page")}>Login</a>
+                        <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"login")}>Login</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"register")}>Register</a>
                     </li>
                 </ul>
             </div>

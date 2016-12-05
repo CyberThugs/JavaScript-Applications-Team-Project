@@ -8,6 +8,8 @@ import About from '../about/About';
 import Home from '../home/Home';
 import ComicsSearchPage from '../comics-search/ComicsSearchPage';
 import LoginPage from '../login-page/LoginPage';
+import RegisterPage from '../register-page/RegisterPage';
+
 
 import Background from '../../components/background/Background';
 
@@ -46,7 +48,8 @@ class App extends Component {
                 {this.props.location === "about" ? <About/> : null}
                 {this.props.location === "/" ? <Home/> : null}
                 {this.props.location === "comics-search" ? <ComicsSearchPage/> : null}
-                {this.props.location === "login-page" ? <LoginPage/> : null}
+                {this.props.location === "login" ? <LoginPage/> : null}
+                {this.props.location === "register" ? <RegisterPage/> : null}
                 <Footer/>
 
                 <Background />
