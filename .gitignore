@@ -27,3 +27,6 @@ npm-debug.log
 typings.json
 jsconfig.json
 
+#ide
+.idea
+
