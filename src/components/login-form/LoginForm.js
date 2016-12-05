@@ -26,7 +26,7 @@ export default class LoginForm extends Component {
         event.preventDefault();
         event.stopPropagation();
 
-        //TODO: function for send data to server
+        //TODO: function for sending data to server
         // this.props.onsubmit(
         //     this.usernameField.value, this.passwordField.value);
     }

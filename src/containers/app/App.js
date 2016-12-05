@@ -6,6 +6,7 @@ import Footer from '../../components/footer/Footer';
 
 import About from '../about/About';
 import Home from '../home/Home';
+import CharactersSearchPage from '../characters-search/CharactersSearchPage';
 import ComicsSearchPage from '../comics-search/ComicsSearchPage';
 import LoginPage from '../login-page/LoginPage';
 import RegisterPage from '../register-page/RegisterPage';
@@ -47,6 +48,7 @@ class App extends Component {
                 <Header location={this.props.location} user={user} handleLocation={this.props.handleLocation} handleLogout={() => this.handleLogout()}/>
                 {this.props.location === "about" ? <About/> : null}
                 {this.props.location === "/" ? <Home/> : null}
+                {this.props.location === "characters-search" ? <CharactersSearchPage/> : null}
                 {this.props.location === "comics-search" ? <ComicsSearchPage/> : null}
                 {this.props.location === "login" ? <LoginPage/> : null}
                 {this.props.location === "register" ? <RegisterPage/> : null}

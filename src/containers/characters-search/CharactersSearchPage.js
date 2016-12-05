@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ComicsSearchForm from '../../components/comics-search-form/ComicsSearchForm';
+import ComicsSearchForm from '../../components/characters-search-form/CharactersSearchForm';
 
-class ComicsSearchPage extends Component {
+class CharactersSearchPage extends Component {
     render() {
         return (
             <div className="container">
@@ -17,6 +17,6 @@ class ComicsSearchPage extends Component {
     }
 }
 
-export default connect()(ComicsSearchPage);
+export default connect()(CharactersSearchPage);
 
 
