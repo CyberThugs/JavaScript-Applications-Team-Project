@@ -7,6 +7,8 @@ import Footer from '../../components/footer/Footer';
 import About from '../about/About';
 import Home from '../home/Home';
 import ComicsSearchPage from '../comics-search/ComicsSearchPage';
+import LoginPage from '../login-page/LoginPage';
+
 import Background from '../../components/background/Background';
 
 const createHistory = require('history/createBrowserHistory').default;
@@ -44,6 +46,7 @@ class App extends Component {
                 {this.props.location === "about" ? <About/> : null}
                 {this.props.location === "/" ? <Home/> : null}
                 {this.props.location === "comics-search" ? <ComicsSearchPage/> : null}
+                {this.props.location === "login-page" ? <LoginPage/> : null}
                 <Footer/>
 
                 <Background />
