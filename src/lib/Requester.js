@@ -1,12 +1,10 @@
-'use strict';
-
 global.self = window;
 window.fetch = null;
 require('whatwg-fetch');
 
 const timer = typeof performance !== `undefined` && typeof performance.now === `function` ? performance : Date;
 
-class Requester {
+export default class Requester {
 
     //TODO: We should probably add authentication here
 
@@ -109,5 +107,3 @@ class Requester {
     }
 }
 
-
-module.exports = Requester;
