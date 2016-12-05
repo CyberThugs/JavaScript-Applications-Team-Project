@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class ComicsSearchForm extends Component {
+export default class CharactersSearchForm extends Component {
     constructor(props) {
         super(props);
 
@@ -18,13 +18,13 @@ export default class ComicsSearchForm extends Component {
     render() {
         return (
             <div>
-                <h1>Search Comics</h1>
+                <h1>Search Characters</h1>
                 <div className="panel panel-default">
                     <form onSubmit={this.onSubmit}>
                         <div className="panel-body">
                             <div className="form-group">
                                 <label>Name:</label>
-                                <input type="text" className="form-control" id="comic-name" ref="name"/>
+                                <input type="text" className="form-control" id="character-name" ref="name"/>
                             </div>
                             <div className="form-group">
                                 <button className="btn btn-primary">Search</button>

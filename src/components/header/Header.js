@@ -15,13 +15,16 @@ class Header extends Component {
             <div id="sidebar-wrapper">
                 <ul className="sidebar-nav">
                     <li className="sidebar-brand">
-                        <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"home")}>
+                        <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"/")}>
                             Marvel Vault
                         </a>
                     </li>
 
                     <li>
                         <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"about")}>About</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"characters-search")}>Search Characters</a>
                     </li>
                     <li>
                         <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"comics-search")}>Search Comics</a>

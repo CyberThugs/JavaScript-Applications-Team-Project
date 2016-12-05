@@ -7,8 +7,8 @@ export default class Home extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-md-6">
-                        Home
+                    <div className="col-md-6 col-md-offset-3">
+                        <h1>Home</h1>
                     </div>
                 </div>
             </div>
