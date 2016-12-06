@@ -9,7 +9,7 @@ class CharactersSearchPage extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 col-md-offset-3">
-                        <ComicsSearchForm />
+                        <ComicsSearchForm characters={this.props.characters.characters}/>
                     </div>
                 </div>
             </div>

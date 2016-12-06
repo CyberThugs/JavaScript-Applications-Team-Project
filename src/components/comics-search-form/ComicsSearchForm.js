@@ -16,6 +16,7 @@ export default class ComicsSearchForm extends Component {
     }
 
     render() {
+        console.log(this.props.comics[14]);
         return (
             <div>
                 <h1>Search Comics</h1>
