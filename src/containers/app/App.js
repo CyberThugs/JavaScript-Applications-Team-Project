@@ -10,9 +10,6 @@ import CharactersSearchPage from '../characters-search/CharactersSearchPage';
 import ComicsSearchPage from '../comics-search/ComicsSearchPage';
 import LoginPage from '../login-page/LoginPage';
 import RegisterPage from '../register-page/RegisterPage';
-import KinveyRequester from '../../lib/KinveyRequester';
-import $ from 'jquery';
-
 
 
 import Background from '../../components/background/Background';
@@ -38,14 +35,6 @@ class App extends Component {
 
         this.characters = this.characters.bind(this);
         this.comics = this.comics.bind(this);
-
-        this.state = {
-            user:{
-                username: sessionStorage.getItem("username"),
-                userId: sessionStorage.getItem("userId")
-            }
-
-        };
     }
     componentWillMount() {
         this._unlisten = history.listen((location, action) => {
@@ -76,40 +65,13 @@ class App extends Component {
                 {this.props.location === "characters-search" ? <CharactersSearchPage characters={this.props.characters}/> : null}
                 {this.props.location === "comics-search" ? <ComicsSearchPage comics={this.props.comics}/> : null}
                 {this.props.location === "login" ? <LoginPage/> : null}
-                {this.props.location === "register" ? <RegisterPage onsubmit={this.register.bind(this)}/> : null}
+                {this.props.location === "register" ? <RegisterPage/> : null}
                 <Footer/>
 
                 <Background />
             </div>
         );
     }
-
-   register(username,password){
-
-        KinveyRequester.registerUser(username,password)
-                .then(success.bind(this));
-
-       function success(userInfo) {
-
-            this.saveAuthInSession(userInfo);
-
-
-       }
-   }
-
-   saveAuthInSession (userInfo){
-       sessionStorage.setItem('authToken', userInfo._kmd.authtoken);
-       sessionStorage.setItem('userId', userInfo._id);
-       sessionStorage.setItem('username', userInfo.username);
-
-       // This will update the entire app UI (e.g. the navigation bar)
-       this.setState({
-           user:{
-               username:  userInfo.username,
-               userId: userInfo._id
-           }
-   });
-   }
 
     characters(error, result)  {
         if (typeof error === 'undefined') error = null;
