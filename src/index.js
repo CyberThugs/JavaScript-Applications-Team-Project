@@ -19,15 +19,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import Api from './lib/Api';
 
-let appApi = new Api();
+setTimeout(function() {
 
-console.log(appApi.getCharacters());
+    ReactDOM.render(
+        <Provider store={store}>
+            <App />
+        </Provider>,
+        document.getElementById('wrapper')
+    );
+}, 0);
 
-ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('wrapper')
-);

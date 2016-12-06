@@ -14,21 +14,36 @@ import RegisterPage from '../register-page/RegisterPage';
 
 import Background from '../../components/background/Background';
 
+import Api from '../../lib/Api';
+
+let appApi = new Api();
+
+
 const createHistory = require('history/createBrowserHistory').default;
 const history = createHistory();
 import { handleLocation } from '../../actions/location';
+import { handleCharacters } from '../../actions/characters';
+import { handleComics } from '../../actions/comics';
 
 import './app.css';
 
 
 class App extends Component {
     static history = history;
+    constructor(props, context) {
+        super(props, context);
 
+        this.characters = this.characters.bind(this);
+        this.comics = this.comics.bind(this);
+    }
     componentWillMount() {
         this._unlisten = history.listen((location, action) => {
             this.props.handleLocation(location.pathname);
             history.push(location.pathname);
         })
+
+        appApi.getCharacters(this.characters);
+        appApi.getComics(this.comics)
     }
 
     handleLogout() {
@@ -41,15 +56,14 @@ class App extends Component {
     }
 
     render() {
-        console.log(history);
         const { user } = this.props;
         return (
             <div className="container">
                 <Header location={this.props.location} user={user} handleLocation={this.props.handleLocation} handleLogout={() => this.handleLogout()}/>
                 {this.props.location === "about" ? <About/> : null}
                 {this.props.location === "/" ? <Home/> : null}
-                {this.props.location === "characters-search" ? <CharactersSearchPage/> : null}
-                {this.props.location === "comics-search" ? <ComicsSearchPage/> : null}
+                {this.props.location === "characters-search" ? <CharactersSearchPage characters={this.props.characters}/> : null}
+                {this.props.location === "comics-search" ? <ComicsSearchPage comics={this.props.comics}/> : null}
                 {this.props.location === "login" ? <LoginPage/> : null}
                 {this.props.location === "register" ? <RegisterPage/> : null}
                 <Footer/>
@@ -57,6 +71,34 @@ class App extends Component {
                 <Background />
             </div>
         );
+    }
+
+    characters(error, result)  {
+        if (typeof error === 'undefined') error = null;
+        if (typeof result === 'undefined') result = null;
+
+        if (error) {
+            throw new Error();
+        }
+
+        if(result) {
+            this.props.handleCharacters(result.results)
+        }
+
+    }
+
+    comics(error, result)  {
+        if (typeof error === 'undefined') error = null;
+        if (typeof result === 'undefined') result = null;
+
+        if (error) {
+            throw new Error();
+        }
+
+        if(result) {
+            this.props.handleComics(result.results)
+        }
+
     }
 }
 
@@ -69,9 +111,11 @@ App.contextTypes = {
 };
 
 const mapStateToProps = (state) => {
-    const { location } = state;
+    const { location, characters, comics } = state;
     return {
         location: location ? location.location : null,
+        characters: characters || null,
+        comics: comics || null,
     };
 };
 
@@ -80,6 +124,14 @@ const mapDispatchToProps = (dispatch) => {
     return {
         handleLocation: (currentLocation) => {
             dispatch(handleLocation(currentLocation))
+        },
+
+        handleCharacters: (characters) => {
+            dispatch(handleCharacters(characters))
+        },
+
+        handleComics: (comics) => {
+            dispatch(handleComics(comics))
         }
     };
 };

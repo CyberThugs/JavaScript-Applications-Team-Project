@@ -207,21 +207,14 @@ export default class Api {
         this._marvelKey = 'cc47f30f0ba7a8ca38a7fb938940c2b9';
         this._requester = Requester.request;
         this._characters = null;
+        this._comics = null;
     }
 
-    getCharacters () {
-        this._requester(this._marvelUrl + '/v1/public/characters?apikey=' + this._marvelKey + '&hash=' + MD5("" + new Date().getTime() + "1789322215518fecae1c9eccff120281af4abda2" + "cc47f30f0ba7a8ca38a7fb938940c2b9"), null, (error, result) => {
-            if (typeof error === 'undefined') error = null;
-            if (typeof result === 'undefined') result = null;
+    getCharacters (cb) {
+        this._requester(this._marvelUrl + '/v1/public/characters?apikey=' + this._marvelKey + '&hash=' + MD5("" + new Date().getTime() + "1789322215518fecae1c9eccff120281af4abda2" + "cc47f30f0ba7a8ca38a7fb938940c2b9"), null, cb);
+    }
 
-            if (error) {
-                throw new Error();
-            }
-
-            if(result) {
-                this._characters = result.results;
-            }
-
-        });
+    getComics (cb) {
+        this._requester(this._marvelUrl + '/v1/public/comics?apikey=' + this._marvelKey + '&hash=' + MD5("" + new Date().getTime() + "1789322215518fecae1c9eccff120281af4abda2" + "cc47f30f0ba7a8ca38a7fb938940c2b9"), null, cb);
     }
 }

@@ -1,15 +1,15 @@
-import {LOCATION} from "../actions/location"
+import {CHARACTERS} from "../actions/characters"
 
 const initialState = {
-    location:"/"
+    characters: null
 };
 
 export default function location(state = initialState, action) {
     switch (action.type) {
-        case LOCATION:
+        case CHARACTERS:
         {
             window.history.pushState("object or string", "Title", `${action.payload}`);
-            return Object.assign({}, state, {location:action.payload});
+            return Object.assign({}, state, {characters: action.payload});
         }
 
         default:

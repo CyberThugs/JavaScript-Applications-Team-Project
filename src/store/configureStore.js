@@ -2,11 +2,15 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import location from "../reducers/location";
+import characters from "../reducers/characters";
+import comics from "../reducers/comics";
 
 const logger = createLogger();
 const rootReducer = combineReducers(
   {
-      location
+    location,
+    characters,
+    comics
   }
 );
 
