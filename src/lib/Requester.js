@@ -56,8 +56,8 @@ export default class Requester {
             response.json()
 
             .then(json => {
-                if (json.error) cb(json.error, json.result || {}, json.user || null);
-                else cb(null, json.result || {}, json.user || null);
+                if (json.error) cb(json.error, json.data || {}, json.user || null);
+                else cb(null, json.data || {}, json.user || null);
             })
             .catch(error => {
                 cb({
