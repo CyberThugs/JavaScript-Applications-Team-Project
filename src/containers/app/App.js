@@ -82,6 +82,7 @@ class App extends Component {
         }
 
         if(result) {
+            console.log(result);
             this.props.handleCharacters(result.results)
         }
 

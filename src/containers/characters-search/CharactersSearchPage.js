@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ComicsSearchForm from '../../components/characters-search-form/CharactersSearchForm';
+import CharactersSearchForm from '../../components/characters-search-form/CharactersSearchForm';
+import CharactersList from '../../components/characters-list/CharactersList';
 
 class CharactersSearchPage extends Component {
     render() {
@@ -9,7 +10,8 @@ class CharactersSearchPage extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 col-md-offset-3">
-                        <ComicsSearchForm characters={this.props.characters.characters}/>
+                        <CharactersSearchForm />
+                        <CharactersList characters={this.props.characters.characters}/>
                     </div>
                 </div>
             </div>

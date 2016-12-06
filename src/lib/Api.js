@@ -211,7 +211,7 @@ export default class Api {
     }
 
     getCharacters (cb) {
-        this._requester(this._marvelUrl + '/v1/public/characters?apikey=' + this._marvelKey + '&hash=' + MD5("" + new Date().getTime() + "1789322215518fecae1c9eccff120281af4abda2" + "cc47f30f0ba7a8ca38a7fb938940c2b9"), null, cb);
+        this._requester(this._marvelUrl + '/v1/public/characters?limit=100&apikey=' + this._marvelKey + '&hash=' + MD5("" + new Date().getTime() + "1789322215518fecae1c9eccff120281af4abda2" + "cc47f30f0ba7a8ca38a7fb938940c2b9"), null, cb);
     }
 
     getComics (cb) {

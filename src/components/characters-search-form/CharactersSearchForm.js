@@ -4,7 +4,7 @@ const style = {
     width: '400px',
     height: '500px',
     overflow: 'auto'
-}
+};
 
 export default class CharactersSearchForm extends Component {
     constructor(props) {
@@ -12,7 +12,6 @@ export default class CharactersSearchForm extends Component {
 
         this.onSubmit = this.onSubmit.bind(this);
     }
-
 
     onSubmit(e) {
         e.preventDefault();
@@ -22,7 +21,6 @@ export default class CharactersSearchForm extends Component {
     }
 
     render() {
-        console.log(this.props.characters[0])
         return (
             <div>
                 <h1>Search Characters</h1>
@@ -38,11 +36,6 @@ export default class CharactersSearchForm extends Component {
                             </div>
                         </div>
                     </form>
-
-                    <div style={style}>
-                        <h3><strong>Name:</strong> {this.props.characters[0].name}</h3>
-                        <p><strong>Resource Url:</strong>{this.props.characters[0].resourceURI}</p>
-                    </div>
                 </div>
             </div>
         )
