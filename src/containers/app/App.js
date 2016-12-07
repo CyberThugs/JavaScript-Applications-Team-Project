@@ -87,6 +87,8 @@ class App extends Component {
 
         function success(userInfo) {
             this.saveAuthInSession(userInfo);
+            console.log("Here");
+            this.props.handleLocation("/");
         }
     }
     
@@ -97,6 +99,7 @@ class App extends Component {
 
         function success(userInfo) {
             this.saveAuthInSession(userInfo);
+            this.props.handleLocation("/");
         }
     }
 
