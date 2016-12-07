@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 
+import Api from '../../lib/Api';
+
+let api = new Api();
+
 const style = {
     width: '400px',
     height: '500px',
@@ -11,13 +15,36 @@ export default class CharactersSearchForm extends Component {
         super(props);
 
         this.onSubmit = this.onSubmit.bind(this);
+        this.searchCharacter = this.searchCharacter.bind(this);
     }
 
     onSubmit(e) {
         e.preventDefault();
         e.stopPropagation();
 
+        let characterName = this.refs.name.value.trim();
+
+        console.log(characterName);
+
+        api.searchCharacter(this.searchCharacter, characterName);
+
         console.log('onSubmit()');
+    }
+
+    searchCharacter(error, result) {
+        if (typeof error === 'undefined') error = null;
+        if (typeof result === 'undefined') result = null;
+
+        if (error) {
+            throw new Error();
+        }
+
+        if (result) {
+            console.log(result);
+            this.props.handleCharacterSearch(result);
+
+        }
+
     }
 
     render() {

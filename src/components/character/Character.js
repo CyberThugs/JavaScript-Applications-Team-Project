@@ -7,14 +7,11 @@ export default class Character extends Component {
     }
 
     render() {
+        console.log(this.props.characterSearch);
+
         return (
             <div className="well">
-                <img
-                    src={this.props.character.thumbnail.path + '/portrait_xlarge.' + this.props.character.thumbnail.extension}
-                    alt={this.props.character.name}/>
-                <h3><strong>Name:</strong> {this.props.character.name}</h3>
-                <h3><strong>Description: </strong> {this.props.character.description}</h3>
-                <a href="javascript:;">Details</a>
+                <h1>{this.props.characterSearch}</h1>
             </div>
         )
     }
