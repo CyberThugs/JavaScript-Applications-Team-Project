@@ -85,7 +85,7 @@ class App extends Component {
 
     logout(){
         sessionStorage.clear();
-        this.handleLocation("/");
+        this.props.handleLocation("/");
 
     }
 
