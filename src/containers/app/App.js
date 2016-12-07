@@ -55,7 +55,8 @@ class App extends Component {
     }
 
     handleLogout() {
-
+        sessionStorage.clear();
+        handleLocation("/");
     }
 
     componentWillUnmount() {
@@ -74,11 +75,18 @@ class App extends Component {
                 {this.props.location === "comics-search" ? <ComicsSearchPage comics={this.props.comics}/> : null}
                 {this.props.location === "login" ? <LoginPage onsubmit={this.login.bind(this)}/> : null}
                 {this.props.location === "register" ? <RegisterPage onsubmit={this.register.bind(this)}/> : null}
+                {this.props.location === "logout" ? this.logout() : null}
                 <Footer/>
 
                 <Background />
             </div>
         );
+    }
+
+    logout(){
+        sessionStorage.clear();
+        this.handleLocation("/");
+
     }
 
     login(username,password){
@@ -87,7 +95,6 @@ class App extends Component {
 
         function success(userInfo) {
             this.saveAuthInSession(userInfo);
-            console.log("Here");
             this.props.handleLocation("/");
         }
     }
@@ -99,7 +106,7 @@ class App extends Component {
 
         function success(userInfo) {
             this.saveAuthInSession(userInfo);
-            this.props.handleLocation("/");
+            this.login(username,password)
         }
     }
 

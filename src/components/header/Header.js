@@ -19,7 +19,6 @@ class Header extends Component {
                             Marvel Vault
                         </a>
                     </li>
-
                     <li>
                         <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"about")}>About</a>
                     </li>
@@ -29,12 +28,21 @@ class Header extends Component {
                     <li>
                         <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"comics-search")}>Search Comics</a>
                     </li>
-                    <li>
-                        <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"login")}>Login</a>
+
+                    {sessionStorage.length == 0 ? <div>
+                        <li>
+                            <a href="javascript:;" onClick={this.props.handleLocation.bind(null, "login")}>Login</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"
+                               onClick={this.props.handleLocation.bind(null, "register")}>Register</a>
+                        </li>
+                    </div>
+                        : <li>
+                        <a href="javascript:;" onClick={this.props.handleLocation.bind(null, "logout")}>Logout</a>
                     </li>
-                    <li>
-                        <a href="javascript:;" onClick={this.props.handleLocation.bind(null,"register")}>Register</a>
-                    </li>
+                    }
+
                 </ul>
             </div>
         );
