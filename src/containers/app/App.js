@@ -18,14 +18,14 @@ import Api from '../../lib/Api';
 
 let appApi = new Api();
 
-
 const createHistory = require('history/createBrowserHistory').default;
 const history = createHistory();
 import { handleLocation } from '../../actions/location';
 import { handleCharacters } from '../../actions/characters';
 import { handleComics } from '../../actions/comics';
 
-import './app.css';
+
+import KinveyRequester from '../../lib/KinveyRequester';
 
 
 class App extends Component {
@@ -35,12 +35,20 @@ class App extends Component {
 
         this.characters = this.characters.bind(this);
         this.comics = this.comics.bind(this);
+
+        this.state = {
+            user:{
+                username: sessionStorage.getItem("username"),
+                userId: sessionStorage.getItem("userId")
+            }
+
+        };
     }
     componentWillMount() {
         this._unlisten = history.listen((location, action) => {
             this.props.handleLocation(location.pathname);
             history.push(location.pathname);
-        })
+        });
 
         appApi.getCharacters(this.characters);
         appApi.getComics(this.comics)
@@ -65,12 +73,39 @@ class App extends Component {
                 {this.props.location === "characters-search" ? <CharactersSearchPage characters={this.props.characters}/> : null}
                 {this.props.location === "comics-search" ? <ComicsSearchPage comics={this.props.comics}/> : null}
                 {this.props.location === "login" ? <LoginPage/> : null}
-                {this.props.location === "register" ? <RegisterPage/> : null}
+                {this.props.location === "register" ? <RegisterPage onsubmit={this.register.bind(this)}/> : null}
                 <Footer/>
 
                 <Background />
             </div>
         );
+    }
+
+    register(username,password){
+
+        KinveyRequester.registerUser(username,password)
+            .then(success.bind(this));
+
+        function success(userInfo) {
+
+            this.saveAuthInSession(userInfo);
+
+
+        }
+    }
+
+    saveAuthInSession (userInfo){
+        sessionStorage.setItem('authToken', userInfo._kmd.authtoken);
+        sessionStorage.setItem('userId', userInfo._id);
+        sessionStorage.setItem('username', userInfo.username);
+
+        // This will update the entire app UI (e.g. the navigation bar)
+        this.setState({
+            user:{
+                username:  userInfo.username,
+                userId: userInfo._id
+            }
+        });
     }
 
     characters(error, result)  {
@@ -97,6 +132,10 @@ class App extends Component {
         }
 
         if(result) {
+            console.log('----------------');
+            console.log(result);
+            console.log('----------------');
+
             this.props.handleComics(result.results)
         }
 
