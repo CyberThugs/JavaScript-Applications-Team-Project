@@ -80,6 +80,7 @@ class App extends Component {
                 {this.props.location === "comics-search" ? <ComicsSearchPage comics={this.props.comics}/> : null}
                 {this.props.location === "login" ? <LoginPage onsubmit={this.login.bind(this)}/> : null}
                 {this.props.location === "register" ? <RegisterPage onsubmit={this.register.bind(this)}/> : null}
+                {this.props.location === "logout" ? this.logout() : null}
                 <Footer/>
 
                 <Background />
@@ -87,6 +88,11 @@ class App extends Component {
         );
     }
 
+    logout(){
+        sessionStorage.clear();
+        this.props.handleLocation("/");
+
+    }
     login(username, password) {
         KinveyRequester.loginUser(username, password)
             .then(success.bind(this));
