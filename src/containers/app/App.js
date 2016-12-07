@@ -72,7 +72,7 @@ class App extends Component {
                 {this.props.location === "/" ? <Home/> : null}
                 {this.props.location === "characters-search" ? <CharactersSearchPage characters={this.props.characters}/> : null}
                 {this.props.location === "comics-search" ? <ComicsSearchPage comics={this.props.comics}/> : null}
-                {this.props.location === "login" ? <LoginPage/> : null}
+                {this.props.location === "login" ? <LoginPage onsubmit={this.login.bind(this)}/> : null}
                 {this.props.location === "register" ? <RegisterPage onsubmit={this.register.bind(this)}/> : null}
                 <Footer/>
 
@@ -81,16 +81,22 @@ class App extends Component {
         );
     }
 
+    login(username,password){
+        KinveyRequester.loginUser(username,password)
+            .then(success.bind(this));
+
+        function success(userInfo) {
+            this.saveAuthInSession(userInfo);
+        }
+    }
+    
     register(username,password){
 
         KinveyRequester.registerUser(username,password)
             .then(success.bind(this));
 
         function success(userInfo) {
-
             this.saveAuthInSession(userInfo);
-
-
         }
     }
 
